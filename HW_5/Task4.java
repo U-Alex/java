@@ -7,23 +7,28 @@ import java.util.Random;
 public class Task4 {
     public static void main(String[] args) {
         int[][] arr = new int[8][8];
+        int total_queen = 8;
         Random rnd = new Random();
         int queen, row, col, next;
         boolean ok = false;
         int repeat;
         for (repeat = 0; !ok; repeat++) {
             clearArray(arr);
-            queen = 8;
-            while (queen > 0) {
+            queen = 1;
+            while (queen <= total_queen) {
                 if (!checkNull(arr)) break;
                 next = rnd.nextInt(0, 64);
                 row = next / 8;
                 col = next % 8;
                 if (arr[row][col] != 0) continue;
                 setQueen(arr, queen, row, col);
-                queen--;
+                queen++;
             }
-            ok = (queen == 0) ? true : false;
+            ok = (queen > total_queen) ? true : false;
+            if (repeat > 999999) {
+                System.out.print("расстановка всех фигур невозможна\n");
+                break;
+            }
         }
         System.out.printf("количество попыток - %d\n", repeat);
         printArray(arr);
@@ -71,16 +76,22 @@ public class Task4 {
 
     private static void printArray(int[][] arr) {
         int pos;
+        System.out.print("╔═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╗\n");
         for (int i = 0; i < arr.length; i++) {
+            System.out.print("║ ");
             for (int j = 0; j < arr[i].length; j++) {
                 pos = arr[i][j];
                 if (pos > 0) System.out.print(arr[i][j] + " ");
                 else {
                     if (pos == 0) System.out.print("+ ");
-                    else System.out.print(". "); 
+                    else System.out.print("  "); 
                 }
+                if (j < arr[i].length - 1) System.out.print("│ ");
+                else System.out.print("║\n");
             }
-            System.out.println();
+            //System.out.println();
+            if (i < arr.length - 1) System.out.print("╟───┼───┼───┼───┼───┼───┼───┼───╢\n");
         }
+        System.out.print("╚═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╝\n");
     }
 }
