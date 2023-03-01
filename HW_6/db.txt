@@ -1,0 +1,10 @@
+1;Asus;32;128;black;Linux Fedora
+2;Asus;16;128;black;Linux Ubuntu
+3;Aser;16;256;blue;Windows 10
+4;Asus;32;256;black;Linux Fedora
+5;HP;16;128;blue;Windows 10
+6;HP;32;256;black;Windows 11
+7;Aser;8;128;black;Windows 7
+8;HP;64;512;blue;Windows 10
+9;Asus;64;760;black;Linux Ubuntu
+10;Samsung;16;512;red;Windows 11
